@@ -1,0 +1,72 @@
+<%- include ('layouts/head.ejs') %>
+    <title>LinkedItems | Home Page </title>
+
+    <body>
+        <%- include ('layouts/navigation.ejs') %>
+            <!-- Hero Section Begin -->
+            <section class="hero">
+                <div class="hero__slider owl-carousel">
+                    <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-5 col-lg-7 col-md-8">
+                                    <div class="hero__text">
+                                        <h6>Hot Collections</h6>
+                                        <h2>All Seasons Collections</h2>
+                                        <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.</p>
+                                        <a href="/shop/products" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Hero Section End -->
+
+            <br>
+            <br>
+
+            <!-- Product Section Begin -->
+            <section class="product spad">
+                <div class="container">
+                    <% if(prods.length >  0) {%>
+                        <div class="row product__filter">
+                            <% var counter = 0; %>
+                                <% for (let product of prods) { %>
+                                    <% if(counter != 4) {%>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                                            <div class="product__item">
+                                                <div class="product__item__pic set-bg">
+                                                    <ul>
+                                                        <li class="product__hover">
+                                                            <a href="shop/<%=product._id%>"><img src="<%= product.imageUrl %>" alt="<%= product.name%>"></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product__item__text">
+                                                    <h6 style="color: black;">
+                                                        <%= product.name %>
+                                                    </h6>
+                                                    <a href="" class="add-cart">+ Add To Cart</a>
+                                                    <h5>
+                                                        $
+                                                        <%= product.price %>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% counter++; %>
+                                            <%}else{%>
+                                                <% break; %>
+                                                    <%}%>
+                                                        <% } %>
+                        </div>
+                        <% }else{ %>
+                            <h1 style="text-align: center;">No Products found</h1>
+                            <%}%>
+                </div>
+            </section>
+            <!-- Product Section End -->
+
+            <%- include ('layouts/foot.ejs') %>
